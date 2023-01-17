@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  blog_github:
+    image: jekyll/jekyll:3.8
+    container_name: lifeisavoyage-github-io
+    env_file: .env
+    restart: always
+    volumes:
+      - $PWD:/srv/jekyll
+      - $PWD/.cache/bundle:/usr/local/bundle
+    ports:
+      - "${PORT_WEB_PUBLIC}:${PORT_WEB_EXPOSE}"
+    command: jekyll serve
